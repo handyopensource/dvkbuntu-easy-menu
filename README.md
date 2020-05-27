@@ -6,16 +6,22 @@
 ## Installation
 
 Comme tout logiciel écrit en node js l'installation reste simple, il suffit de cloner ce repo et de saisir la commande :
-**npm install**
+```
+npm install
+```
 puis pour lancer le programme :
-**npm start**
+```
+npm start
+```
 
 ***Logiciel requis : NodeJS et NPM***
 
 ## Compilation
 
 Dans le cas ou vous souhaitiez compiler votre propre version de easy menu il est possible de le faire via la commandes :
-**npm run dist**
+```
+npm run dist
+```
 Cette commande va compiler le programme pour votre OS
 - **[windows]**
 	- nsis
