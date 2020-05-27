@@ -1,6 +1,5 @@
 const { ipcMain } = require('electron')
 const say = require('say')
-const utf8 = require('utf8');
 
 String.prototype.sansAccent = function() {
     var accent = [

@@ -1,17 +1,38 @@
 {
-  "name": "senior-menu",
-  "version": "1.0.0",
-  "description": "Un menu adapté au personne agées pour couvir les principales fonctionnalité d'un ordinateur",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "devDependencies": {
-    "electron": "^9.0.0"
-  },
-  "dependencies": {
-    "google-tts-api": "0.0.4",
-    "say": "^0.16.0",
-    "utf8": "^3.0.0"
-  }
+    "name": "dvkbuntu-easy-menu",
+    "version": "1.0.0",
+    "description": "Easy menu est un menu aillant pour but de simplifier l’ensemble des usages classiques d'un ordinateur pour les personne aillant des difficulté avec l'informatique.",
+    "main": "main.js",
+    "devDependencies": {
+        "electron": "^9.0.0",
+        "electron-builder": "^22.7.0"
+    },
+    "dependencies": {
+        "google-tts-api": "0.0.4",
+        "say": "^0.16.0",
+        "utf8": "^3.0.0"
+    },
+    "build": {
+        "appId": "com.jeantet.easymenu",
+        "productName": "Easy menu",
+        "linux": {
+            "target": [
+                "deb",
+                "AppImage",
+                "rpm"
+            ]
+        },
+        "win": {
+            "target": [
+                "nsis",
+                "portable"
+            ]
+        }
+    },
+    "scripts": {
+        "start": "electron .",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder",
+        "postinstall": "install-app-deps"
+    }
 }

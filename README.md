@@ -12,6 +12,19 @@ puis pour lancer le programme :
 
 ***Logiciel requis : NodeJS et NPM***
 
+## Compilation
+
+Dans le cas ou vous souhaitiez compiler votre propre version de easy menu il est possible de le faire via la commandes :
+**npm run dist**
+Cette commande va compiler le programme pour votre OS
+- **[windows]**
+	- nsis
+	- portable
+- **[linux]**
+	- deb
+	- AppImage
+	- rpm
+
 ## Structure
 
 Actuellement le programme possède une architecture définie

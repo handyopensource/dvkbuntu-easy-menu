@@ -1,10 +1,8 @@
 const { app, BrowserWindow, Menu, MenuItem, dialog } = require('electron')
 const path = require('path')
-const say = require('say')
 
 require('./ipcs/mainIpc') //require du fichier principal des IPCs
 
-say.speak('Bienvenu sur senior menu!')
 let mainWindow;
 
 function createWindow() {
