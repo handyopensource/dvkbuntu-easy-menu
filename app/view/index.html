@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Senior Menu - Accueil</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/main.css">
+    <link href="./stylesheets/fontawesome/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--<button onclick="window.api.send('toMain', 'some data');">Send data to show alert</button>
+  <button onclick="window.api.shutdown();">Shutdown the app</button> -->
+    <div class="content">
+        <div class="tile" style="background-color: #6A00FF;" onclick="window.api.openMailClient();" onmouseenter="window.api.send('saySomething', 'Gestion mail')">
+            <div class="icon-wrapper">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <span class="bottom-title">Gestion mail</span>
+        </div>
+
+        <div class="tile" style="background-color: #183ACC;" onclick="window.api.openWebMenu();" onmouseenter="window.api.send('saySomething', 'Axe et des a internet')">
+            <div class=" icon-wrapper ">
+                <i class="fas fa-globe-europe "></i>
+            </div>
+            <span class="bottom-title ">Accéder à internet</span>
+        </div>
+
+        <div class="tile " style="background-color: #A20025; " onclick="window.api.openNoteMenu(); " onmouseenter="window.api.send( 'saySomething', 'Prendre des notes' ) ">
+            <div class="icon-wrapper ">
+                <i class="fas fa-clipboard "></i>
+            </div>
+            <span class="bottom-title ">Prendre des notes</span>
+        </div>
+
+        <div class="tile " style="background-color: #A20025; " onclick="window.api.openNoteMenu(); " onmouseenter="window.api.send( 'saySomething', 'Prendre des notes') ">
+            <div class="icon-wrapper ">
+                <i class="fas fa-clipboard "></i>
+            </div>
+            <span class="bottom-title ">Prendre des notes</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js "></script>
+</body>
+
+</html>

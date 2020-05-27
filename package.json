@@ -1,0 +1,17 @@
+{
+  "name": "senior-menu",
+  "version": "1.0.0",
+  "description": "Un menu adapté au personne agées pour couvir les principales fonctionnalité d'un ordinateur",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^9.0.0"
+  },
+  "dependencies": {
+    "google-tts-api": "0.0.4",
+    "say": "^0.16.0",
+    "utf8": "^3.0.0"
+  }
+}
