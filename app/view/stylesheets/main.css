@@ -1,3 +1,12 @@
+:root {
+    --color-main: #00316e;
+    --color-secondary: #165786;
+    --color-gray: #383838;
+    --color-black: #0C0C0C;
+    --color-red: #FF0000;
+    --color-text: white;
+}
+
 @font-face {
     font-family: SegoeUI;
     src: local("Segoe UI"), url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2) format("woff2"), url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff) format("woff"), url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf) format("truetype");
@@ -17,7 +26,7 @@ body {
 .content {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    background-color: rgb(39, 39, 39);
+    background-color: var(--color-gray);
     height: 100%;
     align-items: center;
     position: relative;
@@ -36,10 +45,11 @@ body {
 
 .tile {
     position: relative;
+    background-color: var(--color-secondary);
     margin: auto;
     width: 350px;
     height: 350px;
-    color: white;
+    color: var(--color-text);
     transition: transform .2s;
 }
 
@@ -66,7 +76,7 @@ body {
     .content {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        background-color: rgb(39, 39, 39);
+        background-color: var(--color-text);
         height: 100%;
         align-items: center;
         position: relative;
@@ -77,7 +87,7 @@ body {
     .content {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        background-color: rgb(39, 39, 39);
+        background-color: var(--color-gray);
         height: 100%;
         align-items: center;
         position: relative;
@@ -88,7 +98,7 @@ body {
     .content {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        background-color: rgb(39, 39, 39);
+        background-color: var(--color-gray);
         height: 100%;
         align-items: center;
         position: relative;

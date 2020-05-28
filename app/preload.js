@@ -10,7 +10,7 @@ contextBridge.exposeInMainWorld(
             }
         },
         receive: (channel, func) => {
-            let validChannels = ["fromMain"];
+            let validChannels = ["fromMain", "setTheme"];
             if (validChannels.includes(channel)) {
                 ipcRenderer.on(channel, (event, data) => func(data));
             }
@@ -23,6 +23,9 @@ contextBridge.exposeInMainWorld(
         },
         openNoteMenu: () => {
             ipcRenderer.send("openNoteMenu");
+        },
+        getTheme: () => {
+            ipcRenderer.send("getTheme");
         }
     }
 );
