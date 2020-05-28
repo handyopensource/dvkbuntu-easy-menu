@@ -1,6 +1,7 @@
 {
     "name": "dvkbuntu-easy-menu",
     "version": "1.0.0",
+    "author": "Joey JEANTET <jeantetjoey.pro@gmail.com>",
     "description": "Easy menu est un menu aillant pour but de simplifier l’ensemble des usages classiques d'un ordinateur pour les personne aillant des difficulté avec l'informatique.",
     "main": "main.js",
     "devDependencies": {
