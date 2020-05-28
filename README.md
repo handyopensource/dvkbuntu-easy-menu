@@ -1,6 +1,6 @@
 # dvkbuntu easy menu
 
-**Easy menu** est un menu aillant pour but de simplifier l’ensemble des usages classiques d'un ordinateur pour les personne aillant des difficulté avec l'informatique.
+**Easy menu** est un menu ayant pour but de simplifier l'ensembles des usages classiques d'un ordinateur pour les personnes ayant des difficultés avec l'informatique. 
 
 
 ## Installation
