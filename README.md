@@ -1,6 +1,6 @@
 # dvkbuntu easy menu
 
-**Easy menu** est un menu aillant pour but de simplifier l’ensemble des usages classiques d'un ordinateur pour les personne aillant des difficulté avec l'informatique.
+**Easy menu** est un menu ayant pour but de simplifier l'ensembles des usages classiques d'un ordinateur pour les personnes ayant des difficultés avec l'informatique. 
 
 
 ## Installation
@@ -14,7 +14,7 @@ puis pour lancer le programme :
 npm start
 ```
 
-***Logiciel requis : NodeJS et NPM***
+***Logiciel requis : NodeJS (v>=12.X) attention ubuntu possède la version 8.X le programme ne fonctionne donc pas de base il faut ajouter le repo node et NPM***
 
 ## Compilation
 
