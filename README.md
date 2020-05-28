@@ -14,7 +14,7 @@ puis pour lancer le programme :
 npm start
 ```
 
-***Logiciel requis : NodeJS et NPM***
+***Logiciel requis : NodeJS (v>=12.X) attention ubuntu possède la version 8.X le programme ne fonctionne donc pas de base il faut ajouter le repo node et NPM***
 
 ## Compilation
 
