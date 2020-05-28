@@ -24,7 +24,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
     createWindow()
-
+        //définition du menu contextuel
     const ctxMenu = new Menu()
     ctxMenu.append(new MenuItem({
         label: "Paramètres",
@@ -41,28 +41,28 @@ app.whenReady().then(() => {
     ctxMenu.append(new MenuItem({ label: "rafraichir", role: "forcereload" }))
     ctxMenu.append(new MenuItem({ type: "separator" }))
     ctxMenu.append(new MenuItem({
-        label: "Redimentionner",
-        submenu: [{
-                label: "Cubique",
-                click: function() {
-                    mainWindow.setResizable(true)
-                    mainWindow.setSize(800, 800)
-                    mainWindow.center()
-                    mainWindow.setResizable(false)
+            label: "Redimentionner",
+            submenu: [{
+                    label: "Cubique",
+                    click: function() {
+                        mainWindow.setResizable(true)
+                        mainWindow.setSize(800, 800)
+                        mainWindow.center()
+                        mainWindow.setResizable(false)
+                    }
+                },
+                {
+                    label: "Long",
+                    click: function() {
+                        mainWindow.setResizable(true)
+                        mainWindow.setSize(1500, 420)
+                        mainWindow.center()
+                        mainWindow.setResizable(false)
+                    }
                 }
-            },
-            {
-                label: "Long",
-                click: function() {
-                    mainWindow.setResizable(true)
-                    mainWindow.setSize(1500, 420)
-                    mainWindow.center()
-                    mainWindow.setResizable(false)
-                }
-            }
-        ]
-    }))
-
+            ]
+        }))
+        //définition du clique droit
     mainWindow.webContents.on('context-menu', function(event, params) {
         ctxMenu.popup(mainWindow, params.x, params.y)
     })

@@ -1,5 +1,7 @@
 const { ipcMain, dialog } = require('electron')
 
+//Ici on met toutes les fonction pour ouvrir les nouvelles fenêtres.
+
 ipcMain.on('openWebMenu', () => {
     dialog.showMessageBox({
         type: "info",
