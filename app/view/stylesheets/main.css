@@ -41,6 +41,19 @@ body {
     margin-left: -100px;
     margin-top: 30px;
     text-align: center;
+    transition: all 0.5s ease;
+}
+
+.icon-wrapper-selected {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    font-size: 150px;
+    margin-left: -100px;
+    margin-top: 30px;
+    text-align: center;
+    transition: all 0.5s ease;
 }
 
 .tile {
@@ -50,6 +63,7 @@ body {
     width: 350px;
     height: 350px;
     color: var(--color-text);
+    transition: all 0.5s ease;
     transition: transform .2s;
 }
 
@@ -70,6 +84,23 @@ body {
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     z-index: 2;
+    transition: all 0.5s ease;
+}
+
+.bottom-title-selected {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0 10px 5px;
+    font-size: 2.5em;
+    font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    z-index: 2;
+    transition: all 0.5s ease;
 }
 
 @media only screen and (max-width: 1445px) {
