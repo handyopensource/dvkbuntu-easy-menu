@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Easy Menu - Site web</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/main.css">
+    <link href="./stylesheets/fontawesome/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+    test
+    <script>
+        window.api.send("getWebsiteMeta", {
+            id: 0,
+            url: "https://www.marmiton.org"
+        })
+
+        window.api.receive("webMeta", (data) => {
+            console.log(data)
+        })
+    </script>
+</body>
+
+</html>

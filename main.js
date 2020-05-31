@@ -3,10 +3,8 @@ const path = require('path')
 
 require('./ipcs/mainIpc') //require du fichier principal des IPCs
 
-let mainWindow;
-
 function createWindow() {
-    mainWindow = new BrowserWindow({
+    global.mainWindow = new BrowserWindow({
         width: 800,
         height: 800,
         resizable: false,
@@ -15,11 +13,10 @@ function createWindow() {
             contextIsolation: true,
             enableRemoteModule: false,
             //devTools: false,
-            preload: path.join(__dirname + "/app", 'preload.js')
+            preload: path.join(app.getAppPath() + "/app", 'preload.js')
         }
     })
-
-    mainWindow.loadFile('./app/view/index.html')
+    global.mainWindow.loadFile(app.getAppPath() + '/app/view/index.html')
 }
 
 
@@ -46,26 +43,26 @@ app.whenReady().then(() => {
             submenu: [{
                     label: "Cubique",
                     click: function() {
-                        mainWindow.setResizable(true)
-                        mainWindow.setSize(800, 800)
-                        mainWindow.center()
-                        mainWindow.setResizable(false)
+                        global.mainWindow.setResizable(true)
+                        global.mainWindow.setSize(800, 800)
+                        global.mainWindow.center()
+                        global.mainWindow.setResizable(false)
                     }
                 },
                 {
                     label: "Long",
                     click: function() {
-                        mainWindow.setResizable(true)
-                        mainWindow.setSize(1500, 420)
-                        mainWindow.center()
-                        mainWindow.setResizable(false)
+                        global.mainWindow.setResizable(true)
+                        global.mainWindow.setSize(1500, 420)
+                        global.mainWindow.center()
+                        global.mainWindow.setResizable(false)
                     }
                 }
             ]
         }))
         //définition du clique droit
-    mainWindow.webContents.on('context-menu', function(event, params) {
-        ctxMenu.popup(mainWindow, params.x, params.y)
+    global.mainWindow.webContents.on('context-menu', function(event, params) {
+        ctxMenu.popup(global.mainWindow, params.x, params.y)
     })
 
     app.on('activate', function() {
