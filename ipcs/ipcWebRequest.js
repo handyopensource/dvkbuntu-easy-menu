@@ -8,6 +8,7 @@ ipcMain.on('getWebsiteMeta', (event, data) => {
 
         event.sender.send('webMeta', {
             id: data.id,
+            url: data.url,
             result: result
         })
 

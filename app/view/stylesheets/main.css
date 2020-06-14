@@ -15,21 +15,33 @@
 
 html,
 body {
-    height: 100%;
+    height: auto;
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: "SegoeUI";
+    font-family: "Segoe UI";
+    color: var(--color-text);
+}
+
+.maxSize {
+    height: 100%;
+    width: 100%;
+}
+
+.no-overflow {
     overflow: hidden;
 }
 
 .content {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    background-color: var(--color-gray);
     height: 100%;
     align-items: center;
     position: relative;
+}
+
+.background {
+    background-color: var(--color-gray);
 }
 
 .icon-wrapper {
@@ -101,6 +113,108 @@ body {
     text-overflow: ellipsis;
     z-index: 2;
     transition: all 0.5s ease;
+}
+
+.websiteContainer {
+    width: 100%;
+    height: auto;
+}
+
+.website-card {
+    border: 1px solid var(--color-text);
+    border-radius: 5px;
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+    min-height: 100px;
+    transition: all 0.2s ease;
+}
+
+.website-card:hover {
+    border: 0;
+    transform: scale(1.02);
+    background-color: var(--color-secondary);
+    border-radius: 0;
+}
+
+.website-title {
+    font-weight: bold;
+}
+
+.website-desc {}
+
+.website-img {
+    margin: auto;
+    margin-right: 10px;
+}
+
+.website-img>img {
+    max-height: 80px;
+}
+
+.big-button {
+    width: 80%;
+    margin: 10px 10% 10px 10%;
+}
+
+button {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    font-family: "Segoe UI";
+    border: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all .2s ease;
+}
+
+button:hover {
+    background-color: var(--color-red);
+    transform: scale(1.05);
+}
+
+#dialogoverlay {
+    display: none;
+    opacity: .8;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: var(--color-black);
+    width: 100%;
+    z-index: 10;
+}
+
+#dialogbox {
+    display: none;
+    position: fixed;
+    background: var(--color-main);
+    border-radius: 7px;
+    width: 550px;
+    z-index: 10;
+}
+
+#dialogbox>div {
+    color: var(--color-text);
+    margin: 8px;
+}
+
+#dialogbox>div>#dialogboxhead {
+    background: var(--color-secondary);
+    font-size: 19px;
+    padding: 10px;
+    color: var(--color-text);
+}
+
+#dialogbox>div>#dialogboxbody {
+    background: var(--color-gray);
+    padding: 20px;
+    color: var(--color-text);
+}
+
+#dialogbox>div>#dialogboxfoot {
+    background: var(--color-secondary);
+    padding: 10px;
+    text-align: right;
 }
 
 @media only screen and (max-width: 1445px) {

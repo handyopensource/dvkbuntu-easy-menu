@@ -69,6 +69,7 @@ app.whenReady().then(() => {
         //prise en charge de mac (l'application ne se ferme que lors du Cmd + Q ici on ouvre donc une nouvelle fenêtre si le processus est réactivé)
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
+
 })
 
 app.on('window-all-closed', function() {
