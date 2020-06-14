@@ -4,6 +4,11 @@ const path = require('path')
 
 const store = new Store();
 
+if(store.get('websites') == undefined){
+    store.set('websites', [])
+}
+
+
 function getDomainFromUrl(url) {
     return url.replace("https://", "").split("/")[0]
 }
