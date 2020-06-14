@@ -9,6 +9,7 @@
         "electron-builder": "^22.7.0"
     },
     "dependencies": {
+        "electron-store": "^5.2.0",
         "google-tts-api": "0.0.4",
         "html-metadata-parser": "^1.0.3",
         "say": "^0.16.0",

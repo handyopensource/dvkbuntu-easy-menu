@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html style="height: 100%; width: 100%; overflow: hidden;">
+
+<head>
+    <title>Easy Menu - Navigateur</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/main.css">
+    <link href="./stylesheets/fontawesome/css/all.css" rel="stylesheet">
+</head>
+
+<body style="height: 100%; width: 100%; overflow: hidden;">
+    <div class="menubar">
+        <div class="menubar-left">
+            <button class="mbutton" onclick="back();">←</button>
+            <button class="mbutton" onclick="forward();">→</button>
+            <button class="mbutton" onclick="reload();">r</button>
+        </div>
+        <div class="menubar-right">
+            <button class="mbutton" onclick="window.api.minimizeBrowser()">-</button>
+            <button class="mbutton" onclick="window.api.maximizeBrowser()">o</button>
+            <button class="mbutton" onclick="window.api.closeBrowser()">x</button>
+        </div>
+    </div>
+    <div id='wvc' class='webview'></div>
+
+    <script>
+        var lastUrl
+        function getDomainFromUrl(url) {
+            return url.replace("https://", "").split("/")[0]
+        }
+        var oldDiv = document.getElementById('wvc')
+        document.getElementById('wvc').innerHTML = `<webview id="webview" class="navigateur" src="${window.api.url}"></webview>`
+        var webview = document.getElementById('webview')
+
+        function back(){
+            if(webview.canGoBack()){
+                webview.goBack()
+            }
+        }
+
+        function reload(){
+            webview.reload()
+        }
+
+        function forward(){
+            if(webview.canGoForward()){
+                webview.goForward()
+            }
+        }
+        //fonction utilisable avec la webview
+        //webview.stop();
+        //webview.reload();
+        //webview.canGoBack();
+        //webview.canGoForward();
+        //webview.goBack();
+        //webview.goForward();
+        webview.addEventListener('will-navigate', (e) => {
+            lastUrl = webview.getURL()
+        })
+        webview.addEventListener('did-navigate', (e) => {
+            if(getDomainFromUrl(webview.src)!=getDomainFromUrl(webview.getURL())){
+                webview.stop();
+                webview.loadURL(lastUrl);
+            }
+        })
+    </script>
+</body>
+
+</html>

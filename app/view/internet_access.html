@@ -28,15 +28,27 @@
     </div>
 
     <script>
-        var siteList = ["https://www.marmiton.org", "https://fr.wikipedia.org/", "https://www.impots.gouv.fr", "https://stackoverflow.com"]
-        var count = 0
-        siteList.forEach(function(item) {
-            window.api.send("getWebsiteMeta", {
-                id: count,
-                url: item
+        var sitelist
+        window.api.send("getWebSiteStore")
+        window.api.receive("getWebSiteStore", (data) => {
+            siteList = data
+            //var siteList = ["https://www.marmiton.org", "https://fr.wikipedia.org/", "https://www.impots.gouv.fr", "https://stackoverflow.com"]
+            var count = 0
+            siteList.forEach(function(item) {
+                window.api.send("getWebsiteMeta", {
+                    id: count,
+                    url: item
+                })
+                count += 1
             })
-            count += 1
         })
+
+
+        function deleteWebsite(url){
+            window.api.send("remWebSiteStore", url)
+            $("#websiteContainer").empty()
+            window.api.send("getWebSiteStore")
+        }
 
 
         function promptNewWebSite() {
@@ -69,17 +81,15 @@
         }
 
         function addWebsite(url) {
-            window.api.send("getWebsiteMeta", {
-                id: count,
-                url: url
-            })
-            count += 1
+            window.api.send("addWebSiteStore", url)
+            $("#websiteContainer").empty()
+            window.api.send("getWebSiteStore")
         }
 
         window.api.receive("webMeta", (data) => {
             var id = data.id
             var result = data.result
-            var container = "<div class='website-card' id=website-'" + id + "'>"
+            var container = "<div onclick='window.api.openWebsite(\"" + data.url + "\")' class='website-card' id=website-'" + id + "'>"
             var title = ""
             var desc = ""
             if (result.meta.title !== undefined) {
@@ -105,14 +115,15 @@
             }
 
             if (title !== "" && desc !== "") {
-                container += "<div>" + title + desc + "</div>"
+                container += `<div>${title}${desc}</div>`
             } else {
                 if (title !== "") {
-                    container += "<div>" + title + "</div>"
+                    container += `<div>${title}</div>`
                 }
             }
             console.log(data)
             $("#websiteContainer").append(container)
+            $("#websiteContainer").append(`<button onclick='deleteWebsite("${data.url}")'>Supprimer</button>`)
         })
     </script>
 </body>
