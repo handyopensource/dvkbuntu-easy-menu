@@ -46,13 +46,7 @@
                 webview.goForward()
             }
         }
-        //fonction utilisable avec la webview
-        //webview.stop();
-        //webview.reload();
-        //webview.canGoBack();
-        //webview.canGoForward();
-        //webview.goBack();
-        //webview.goForward();
+
         webview.addEventListener('will-navigate', (e) => {
             lastUrl = webview.getURL()
         })
