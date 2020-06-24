@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="maxSize no-overflow">
+
+<head>
+    <title>Easy Menu - Accueil</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/main.css" />
+    <link href="./stylesheets/fontawesome/css/all.css" rel="stylesheet" />
+</head>
+
+<body class=".no-overflow maxSize no-overflow">
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <!-- <script src="./js/style.js"></script> -->
+    <div class="content background center-content">
+        <form id="formulaire">
+            <div>
+                <label for="theme-name">Nom du thème</label>
+                <input id="theme-name" name="theme-name" type="text" />
+            </div>
+            <div>
+                <label for="color-main">Couleur principale</label>
+                <input id="color-main" name="color-main" type="color" />
+            </div>
+            <div>
+                <label for="">Couleur secondaire</label>
+                <input id="color-secondary" name="color-secondary" type="color" />
+            </div>
+            <div>
+                <label for="color-gray">Couleur grise</label>
+                <input id="color-gray" name="color-gray" type="color" />
+            </div>
+            <div>
+                <label for="color-black">Couleur noire</label>
+                <input id="color-black" name="color-black" type="color" />
+            </div>
+            <div>
+                <label for="color-red">Couleur rouge</label>
+                <input id="color-red" name="color-red" type="color" />
+            </div>
+            <div>
+                <label for="color-text">Couleur texte</label>
+                <input id="color-text" name="color-text" type="color" />
+            </div>
+            <div class="form-submit-div">
+                <input type="submit" value="Valider" />
+            </div>
+        </form>
+    </div>
+    <script>
+        $("#formulaire").on("submit", function (event) {
+            event.preventDefault();
+            console.log($(this).serializeArray());
+        });
+    </script>
+</body>
+
+</html>
