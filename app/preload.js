@@ -10,7 +10,7 @@ contextBridge.exposeInMainWorld(
             }
         },
         receive: (channel, func) => {
-            let validChannels = ["fromMain", "setTheme", "webMeta", "getWebSiteStore"];
+            let validChannels = ["fromMain", "setTheme", "webMeta", "getWebSiteStore", "sendThemes"];
             if (validChannels.includes(channel)) {
                 ipcRenderer.on(channel, (event, data) => func(data));
             }
@@ -32,6 +32,18 @@ contextBridge.exposeInMainWorld(
         },
         getTheme: () => {
             ipcRenderer.send("getTheme");
+        },
+        getThemes: () => {
+            ipcRenderer.send("getThemes");
+        },
+        setTheme: (param) => {
+            ipcRenderer.send("setTheme", param);
+        },
+        addTheme: (param) => {
+            ipcRenderer.send("addTheme", param);
+        },
+        deleteTheme: (param) => {
+            ipcRenderer.send("deleteTheme", param);
         }
     }
 );

@@ -57,7 +57,7 @@ function createWebWindow(width, height, resizable, link, url) {
 
 
 ipcMain.on('openWebMenu', () => {
-    createWindow(1000, 700, false, 'internet_access')
+    createWindow(1000, 700, true, 'internet_access')
 })
 
 ipcMain.on('openCalcMenu', () => {

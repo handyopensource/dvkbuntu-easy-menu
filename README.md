@@ -17,7 +17,7 @@ npm start
 ***Logiciel requis : NodeJS (v>=12.X) attention ubuntu possède la version 8.X le programme ne fonctionne donc pas de base il faut ajouter le repo node et NPM***
 pour compiler sous linux il faut le rpmbuild :
 ```
-apt install rpm
+apt install npm
 ``` 
 
 

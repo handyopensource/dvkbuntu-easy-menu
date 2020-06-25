@@ -86,15 +86,21 @@ body {
 
 .content {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   height: 100%;
   align-items: center;
   position: relative;
 }
 
 .center-content{
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 4px;
+  align-items: center;
+  justify-items: center;
+}
+
+.content-grid-2{
+  grid-template-columns: auto auto;
 }
 
 .background {
@@ -287,35 +293,3 @@ form > .form-submit-div{
   justify-content: right !important;
 }
 
-@media only screen and (max-width: 1445px) {
-  .content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background-color: var(--color-text);
-    height: 100%;
-    align-items: center;
-    position: relative;
-  }
-}
-
-@media only screen and (max-width: 1080px) {
-  .content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    background-color: var(--color-gray);
-    height: 100%;
-    align-items: center;
-    position: relative;
-  }
-}
-
-@media only screen and (max-width: 720px) {
-  .content {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    background-color: var(--color-gray);
-    height: 100%;
-    align-items: center;
-    position: relative;
-  }
-}
