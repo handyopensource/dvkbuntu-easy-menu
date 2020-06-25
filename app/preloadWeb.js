@@ -10,7 +10,7 @@ contextBridge.exposeInMainWorld(
             }
         },
         receive: (channel, func) => {
-            let validChannels = [];
+            let validChannels = ["setTheme"];
             if (validChannels.includes(channel)) {
                 ipcRenderer.on(channel, (event, data) => func(data));
             }
@@ -30,6 +30,9 @@ contextBridge.exposeInMainWorld(
             } else {
                 window.unmaximize();
             }
+        },
+        getTheme: () => {
+            ipcRenderer.send("getTheme");
         },
         url: process.argv.slice(-1)[0]
     }
