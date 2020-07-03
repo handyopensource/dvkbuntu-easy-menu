@@ -7,6 +7,11 @@ const store = new Store();
 if (store.get("websites") == undefined) {
   store.set("websites", []);
 }
+if (store.get("trusted") == undefined) {
+  store.set("trusted", [])
+}
+
+console.log(store.get("trusted"))
 
 if (store.get("params") == undefined) {
   store.set("params", { theme: "default" });
@@ -34,6 +39,17 @@ function buildDomainFromUrl(url) {
 ipcMain.on("getWebSiteStore", (event, data) => {
   event.sender.send("getWebSiteStore", store.get("websites"));
 });
+
+ipcMain.on("getTrusted", (event, data) => {
+  event.sender.send("trusted", store.get("trusted"))
+})
+
+ipcMain.on("addTrusted", (event, data) => {
+  var toset = store.get("trusted");
+  toset.push(getDomainFromUrl(data))
+  store.set("trusted", toset);
+  event.sender.send("trusted", store.get("trusted"))
+})
 
 ipcMain.on("setWebSiteStore", (event, data) => {
   store.set("websites", data);

@@ -10,7 +10,7 @@ contextBridge.exposeInMainWorld(
             }
         },
         receive: (channel, func) => {
-            let validChannels = ["setTheme"];
+            let validChannels = ["setTheme", "trusted"];
             if (validChannels.includes(channel)) {
                 ipcRenderer.on(channel, (event, data) => func(data));
             }
@@ -33,6 +33,12 @@ contextBridge.exposeInMainWorld(
         },
         getTheme: () => {
             ipcRenderer.send("getTheme");
+        },
+        addTrusted: (data) => {
+            ipcRenderer.send("addTrusted", data);
+        },
+        getTrusted: () => {
+            ipcRenderer.send("getTrusted");
         },
         url: process.argv.slice(-1)[0]
     }

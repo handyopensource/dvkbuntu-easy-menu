@@ -36,7 +36,6 @@ function createWebWindow(width, height, resizable, link, url) {
         height: height,
         resizable: resizable,
         autoHideMenuBar: true,
-        frame: false,
         webPreferences: {
             webviewTag: true,
             contextIsolation: true,

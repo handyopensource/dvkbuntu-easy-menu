@@ -29,11 +29,15 @@ body {
   color: var(--color-text);
 }
 
+a, p, button, h1, h2, h3 {
+  font-family: "Segoe UI" !important;
+}
+
 .menubar {
   background-color: var(--color-main);
   -webkit-app-region: drag;
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   height: 40px;
@@ -44,6 +48,7 @@ body {
     width:50%;
     height: 100%;
     text-align: left;
+    display: flex;
 }
 
 .menubar-right{
@@ -55,16 +60,15 @@ body {
 .mbutton {
   -webkit-app-region: no-drag;
   height: 70%;
-  margin:auto;
-  margin-right: 5px;
+  margin:auto 5px auto 5px;
 }
 
 .webview {
   position: absolute;
-  top: 40px;
+  top: 0px;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 40px;
 }
 
 .navigateur{
@@ -204,8 +208,6 @@ body {
   font-weight: bold;
 }
 
-.website-desc {
-}
 
 .website-img {
   margin: auto;
