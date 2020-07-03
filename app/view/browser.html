@@ -16,12 +16,11 @@
             <button class="mbutton">Favoris</button>
             <button class="mbutton">Historique</button>
             <button class="mbutton">Historique</button>
-            
-            <!--<button class="mbutton" onclick="back();">←</button>
-            <button class="mbutton" onclick="forward();">→</button>
-            <button class="mbutton" onclick="reload();">r</button>-->
         </div>
         <div class="menubar-right">
+            <button class="mbutton" onclick="back();">←</button>
+            <button class="mbutton" onclick="forward();">→</button>
+            <button class="mbutton" onclick="reload();">r</button>
             <!--<button class="mbutton" onclick="window.api.minimizeBrowser()">-</button>
             <button class="mbutton" onclick="window.api.maximizeBrowser()">o</button>
             <button class="mbutton" onclick="window.api.closeBrowser()">x</button>-->
@@ -43,18 +42,18 @@
         document.getElementById('wvc').innerHTML = `<webview id="webview" class="navigateur" src="${window.api.url}"></webview>`
         var webview = document.getElementById('webview')
 
-        function back(){
-            if(webview.canGoBack()){
+        function back() {
+            if (webview.canGoBack()) {
                 webview.goBack()
             }
         }
 
-        function reload(){
+        function reload() {
             webview.reload()
         }
 
-        function forward(){
-            if(webview.canGoForward()){
+        function forward() {
+            if (webview.canGoForward()) {
                 webview.goForward()
             }
         }
@@ -63,20 +62,20 @@
             lastUrl = webview.getURL()
         })
         webview.addEventListener('did-navigate', (e) => {
-            if(getDomainFromUrl(webview.src)!=getDomainFromUrl(webview.getURL()) || !trusted.includes(getDomainFromUrl(webview.getURL()))){
+            if ((getDomainFromUrl(webview.src) != getDomainFromUrl(webview.getURL())) && !trusted.includes(getDomainFromUrl(webview.getURL()))) {
                 webview.stop();
-                    if(window.confirm("Redirection vers le site : "+getDomainFromUrl(webview.getURL()))){
-                        if(!trusted.includes(getDomainFromUrl(webview.getURL()))){
-                            if(window.confirm("Voulez vous ajouter "+getDomainFromUrl(webview.getURL())+" au site autorisé")){
-                                window.api.addTrusted(webview.getURL())
-                            }
+                if (window.confirm("Redirection vers le site : " + getDomainFromUrl(webview.getURL()))) {
+                    if (!trusted.includes(getDomainFromUrl(webview.getURL()))) {
+                        if (window.confirm("Voulez vous ajouter " + getDomainFromUrl(webview.getURL()) + " au site autorisé")) {
+                            window.api.addTrusted(webview.getURL())
                         }
-                        webview.src = getDomainFromUrl(webview.getURL())
-                        webview.loadURL(webview.getURL())
-                    }else{
-                        webview.loadURL(lastUrl);
                     }
+                    webview.src = getDomainFromUrl(webview.getURL())
+                    webview.loadURL(webview.getURL())
+                } else {
+                    webview.loadURL(lastUrl);
                 }
+            }
         })
     </script>
 </body>

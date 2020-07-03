@@ -10,7 +10,6 @@ if (store.get("websites") == undefined) {
 if (store.get("trusted") == undefined) {
   store.set("trusted", [])
 }
-
 console.log(store.get("trusted"))
 
 if (store.get("params") == undefined) {
