@@ -33,6 +33,10 @@ a, p, button, h1, h2, h3 {
   font-family: "Segoe UI" !important;
 }
 
+button{
+  outline: none !important;
+}
+
 .menubar {
   background-color: var(--color-main);
   -webkit-app-region: drag;
