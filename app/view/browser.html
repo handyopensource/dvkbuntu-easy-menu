@@ -24,6 +24,7 @@
         <button class="mbutton">Historique</button>
       </div>
       <div class="menubar-right">
+        <button id="fav-button" class="mbutton" onclick="addWebsite()"><i class="far fa-star"></i></button>
         <button class="mbutton" onclick="back();">←</button>
         <button class="mbutton" onclick="forward();">→</button>
         <button class="mbutton" onclick="reload();">r</button>
@@ -36,19 +37,46 @@
     <script>
       var lastUrl;
       var trusted = [];
-      window.api.getTrusted();
-      window.api.receive("trusted", (data) => {
-        trusted = data;
-      });
+      var favorites = [];
 
-      function getDomainFromUrl(url) {
-        return url.replace("https://", "").split("/")[0];
-      }
       var oldDiv = document.getElementById("wvc");
       document.getElementById(
         "wvc"
       ).innerHTML = `<webview id="webview" class="navigateur" src="${window.api.url}"></webview>`;
       var webview = document.getElementById("webview");
+      webview.addEventListener('dom-ready', () => {
+        window.api.getTrusted();
+        window.api.getWebSiteStore();
+      })
+      window.api.receive("trusted", (data) => {
+        trusted = data;
+      });
+
+
+      window.api.receive("getWebSiteStore", (data) => {
+            siteList = data
+            var count = 0
+            var ul = document.getElementById("fav-list");
+            ul.innerHTML = ""
+            favorites=[]
+            siteList.forEach(function(item) {
+              favorites.push(item.url);
+              var li = document.createElement("li");
+              li.appendChild(document.createTextNode(item.title));
+              li.setAttribute("onClick", "webview.loadURL('"+item.url+"');");
+              ul.appendChild(li);
+            })
+            updateStar()
+        })
+
+      function addWebsite(){
+        window.api.addWebSiteStore({'url': webview.getURL(), 'title': webview.getTitle()})
+        window.api.getWebSiteStore();
+      }
+
+      function getDomainFromUrl(url) {
+        return url.replace("https://", "").split("/")[0];
+      }
 
       function back() {
         if (webview.canGoBack()) {
@@ -64,6 +92,14 @@
         if (webview.canGoForward()) {
           webview.goForward();
         }
+      }
+
+      function updateStar(){
+        if(favorites.includes(webview.getURL())){
+              document.getElementById('fav-button').innerHTML="<i class='fas fa-star'></i>"
+            }else{
+              document.getElementById('fav-button').innerHTML="<i class='far fa-star'></i>"
+            }
       }
 
       webview.addEventListener("will-navigate", (e) => {
@@ -97,6 +133,7 @@
             webview.loadURL(lastUrl);
           }
         }
+        updateStar()
       });
     </script>
 
@@ -114,7 +151,7 @@
         </header>
         <main class="modal__content" id="modal-1-content">
         <div class="overflow">
-          <ul>
+          <ul id="fav-list">
               <li>Test 1</li>
               <li>Test 2</li>
               <li>Test 3</li>

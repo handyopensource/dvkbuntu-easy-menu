@@ -4,13 +4,20 @@ const path = require("path");
 
 const store = new Store();
 
+
+if(store.get("version") == undefined || store.get("version") != "0.0.5"){
+  store.set("version", "0.0.5")
+  store.set("websites", []);
+  store.set("trusted", [])
+}
+
 if (store.get("websites") == undefined) {
   store.set("websites", []);
 }
+
 if (store.get("trusted") == undefined) {
   store.set("trusted", [])
 }
-console.log(store.get("trusted"))
 
 if (store.get("params") == undefined) {
   store.set("params", { theme: "default" });
@@ -56,8 +63,16 @@ ipcMain.on("setWebSiteStore", (event, data) => {
 
 ipcMain.on("addWebSiteStore", (event, data) => {
   var toset = store.get("websites");
-  toset.push(buildDomainFromUrl(data));
-  store.set("websites", toset);
+
+  for (let i = 0; i < toset.length; i++) {
+    if(toset[i].url == data.url){
+      return
+    }
+  }
+  if(!toset.includes(data)){
+    toset.push(data);
+    store.set("websites", toset);
+  }
 });
 
 ipcMain.on("remWebSiteStore", (event, data) => {
