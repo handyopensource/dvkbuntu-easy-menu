@@ -45,16 +45,17 @@ a, p, button, h1, h2, h3 {
 }
 
 .menubar-left{
-    width:50%;
-    height: 100%;
-    text-align: left;
-    display: flex;
+  width:50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .menubar-right{
-    width:50%;
-    height: 100%;
-    text-align: right;
+  width:50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .mbutton {
