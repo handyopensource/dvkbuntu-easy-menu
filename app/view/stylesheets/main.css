@@ -62,6 +62,7 @@ a, p, button, h1, h2, h3 {
   -webkit-app-region: no-drag;
   height: 70%;
   margin:auto 5px auto 5px;
+  cursor: pointer;
 }
 
 .webview {
@@ -350,6 +351,7 @@ form > .form-submit-div{
   background-color: var(--color-secondary);
   color: var(--color-text);
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .modal__header {
