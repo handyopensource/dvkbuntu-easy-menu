@@ -88,6 +88,11 @@ a, p, button, h1, h2, h3 {
   overflow: hidden;
 }
 
+.overflow{
+  overflow: auto;
+  height: 400px;
+}
+
 .content {
   display: grid;
   height: 100%;

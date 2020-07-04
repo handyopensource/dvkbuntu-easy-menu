@@ -56,7 +56,7 @@ function createWebWindow(width, height, resizable, link, url) {
 
 
 ipcMain.on('openWebMenu', () => {
-    createWindow(1000, 700, true, 'internet_access')
+    createWebWindow(1000, 700, true, 'browser', 'https://www.google.com')
 })
 
 ipcMain.on('openCalcMenu', () => {
