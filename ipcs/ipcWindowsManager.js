@@ -1,5 +1,10 @@
 const { app, ipcMain, dialog, BrowserWindow, webContents } = require('electron')
 const path = require('path')
+const os = require('os')
+const fs = require('fs')
+const { ElectronBlocker } = require('@cliqz/adblocker-electron');
+const fetch = require('cross-fetch');
+
 
 //Ici on met toutes les fonction pour ouvrir les nouvelles fenêtres.
 
@@ -45,6 +50,12 @@ function createWebWindow(width, height, resizable, link, url) {
             preload: path.join(app.getAppPath() + "/app", 'preloadWeb.js')
         }
     })
+
+    let ses = theWindow.webContents.session;
+
+    ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
+        blocker.enableBlockingInSession(ses);
+      });
 
     theWindow.on('closed', () => {
         //close event

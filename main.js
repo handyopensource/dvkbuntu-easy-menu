@@ -1,6 +1,7 @@
 const { app, BrowserWindow, Menu, MenuItem, dialog } = require('electron')
 const path = require('path')
 
+
 require('./ipcs/mainIpc') //require du fichier principal des IPCs
 
 function createWindow() {
@@ -46,6 +47,8 @@ app.whenReady().then(() => {
             createParams()
         }
     }))
+
+
     ctxMenu.append(new MenuItem({ type: "separator" }))
     ctxMenu.append(new MenuItem({ label: "rafraichir", role: "forcereload" }))
         //définition du clique droit
