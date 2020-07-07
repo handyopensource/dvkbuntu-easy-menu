@@ -83,7 +83,7 @@ ipcMain.on('openMailClient', () => {
         type: "info",
         title: "WindowManager",
         message: "Mail Client",
-        detail: "Le renderer à demandé l'ouverture du client mail"
+        detail: "Cette fonctionnalité n'est pas encore disponible"
     })
 })
 
@@ -92,6 +92,6 @@ ipcMain.on('openNoteMenu', () => {
         type: "info",
         title: "WindowManager",
         message: "Note Menu",
-        detail: "Le renderer à demandé l'ouverture du menu de prises de notes"
+        detail: "Cette fonctionnalité n'est pas encore disponible"
     })
 })
