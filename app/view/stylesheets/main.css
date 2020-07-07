@@ -1,137 +1,482 @@
 :root {
-    --color-main: #00316e;
-    --color-secondary: #165786;
-    --color-gray: #383838;
-    --color-black: #0C0C0C;
-    --color-red: #FF0000;
-    --color-text: white;
+  --color-main: #00316e;
+  --color-secondary: #165786;
+  --color-gray: #383838;
+  --color-black: #0c0c0c;
+  --color-red: #ff0000;
+  --color-text: white;
 }
 
 @font-face {
-    font-family: SegoeUI;
-    src: local("Segoe UI"), url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2) format("woff2"), url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff) format("woff"), url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf) format("truetype");
-    font-weight: 400;
+  font-family: SegoeUI;
+  src: local("Segoe UI"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2)
+      format("woff2"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff)
+      format("woff"),
+    url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf)
+      format("truetype");
+  font-weight: 400;
 }
 
 html,
 body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: "SegoeUI";
-    overflow: hidden;
+  height: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI";
+  color: var(--color-text);
+}
+
+a, p, button, h1, h2, h3 {
+  font-family: "Segoe UI" !important;
+}
+
+button{
+  outline: none !important;
+}
+
+.menubar {
+  background-color: var(--color-main);
+  -webkit-app-region: drag;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  display: flex;
+}
+
+.menubar-left{
+  width:50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.menubar-right{
+  width:50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mbutton {
+  -webkit-app-region: no-drag;
+  height: 70%;
+  margin:auto 5px auto 5px;
+  cursor: pointer;
+}
+
+.webview {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+}
+
+.navigateur{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.maxSize {
+  height: 100%;
+  width: 100%;
+}
+
+.no-overflow {
+  overflow: hidden;
+}
+
+.overflow{
+  overflow: auto;
+  height: 400px;
 }
 
 .content {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    background-color: var(--color-gray);
-    height: 100%;
-    align-items: center;
-    position: relative;
+  display: grid;
+  height: 100%;
+  align-items: center;
+  position: relative;
+}
+
+.center-content{
+  display: grid;
+  grid-auto-flow: row;
+  gap: 4px;
+  align-items: center;
+  justify-items: center;
+}
+
+.content-grid-2{
+  grid-template-columns: auto auto;
+}
+
+.background {
+  background-color: var(--color-gray);
 }
 
 .icon-wrapper {
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    left: 50%;
-    font-size: 200px;
-    margin-left: -100px;
-    margin-top: 30px;
-    text-align: center;
-    transition: all 0.5s ease;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  font-size: 200px;
+  margin-left: -100px;
+  margin-top: 30px;
+  text-align: center;
+  transition: all 0.5s ease;
 }
 
 .icon-wrapper-selected {
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    left: 50%;
-    font-size: 150px;
-    margin-left: -100px;
-    margin-top: 30px;
-    text-align: center;
-    transition: all 0.5s ease;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  font-size: 150px;
+  margin-left: -100px;
+  margin-top: 30px;
+  text-align: center;
+  transition: all 0.5s ease;
 }
 
 .tile {
-    position: relative;
-    background-color: var(--color-secondary);
-    margin: auto;
-    width: 350px;
-    height: 350px;
-    color: var(--color-text);
-    transition: all 0.5s ease;
-    transition: transform .2s;
+  position: relative;
+  background-color: var(--color-secondary);
+  margin: auto;
+  width: 350px;
+  height: 350px;
+  color: var(--color-text);
+  transition: all 0.5s ease;
+  transition: transform 0.2s;
 }
 
 .tile:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .bottom-title {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    padding: 0 10px 5px;
-    font-size: 2em;
-    font-weight: 500;
-    overflow: hidden;
-    white-space: nowrap;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    z-index: 2;
-    transition: all 0.5s ease;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0 10px 5px;
+  font-size: 2em;
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  z-index: 2;
+  transition: all 0.5s ease;
 }
 
 .bottom-title-selected {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    padding: 0 10px 5px;
-    font-size: 2.5em;
-    font-weight: 500;
-    overflow: hidden;
-    white-space: nowrap;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    z-index: 2;
-    transition: all 0.5s ease;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0 10px 5px;
+  font-size: 2.5em;
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  z-index: 2;
+  transition: all 0.5s ease;
 }
 
-@media only screen and (max-width: 1445px) {
-    .content {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        background-color: var(--color-text);
-        height: 100%;
-        align-items: center;
-        position: relative;
-    }
+.websiteContainer {
+  width: 100%;
+  height: auto;
 }
 
-@media only screen and (max-width: 1080px) {
-    .content {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        background-color: var(--color-gray);
-        height: 100%;
-        align-items: center;
-        position: relative;
-    }
+.website-card {
+  border: 1px solid var(--color-text);
+  border-radius: 5px;
+  display: flex;
+  padding: 10px;
+  margin: 10px;
+  min-height: 100px;
+  transition: all 0.2s ease;
 }
 
-@media only screen and (max-width: 720px) {
-    .content {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        background-color: var(--color-gray);
-        height: 100%;
-        align-items: center;
-        position: relative;
-    }
+.website-card:hover {
+  border: 0;
+  transform: scale(1.02);
+  background-color: var(--color-secondary);
+  border-radius: 0;
+}
+
+.website-title {
+  font-weight: bold;
+}
+
+
+.website-img {
+  margin: auto;
+  margin-right: 10px;
+}
+
+.website-img > img {
+  max-height: 80px;
+}
+
+.big-button {
+  width: 80%;
+  margin: 10px 10% 10px 10%;
+}
+
+button {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  font-family: "Segoe UI";
+  border: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--color-red);
+  transform: scale(1.05);
+}
+
+#dialogoverlay {
+  display: none;
+  opacity: 0.8;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background: var(--color-black);
+  width: 100%;
+  z-index: 10;
+}
+
+#dialogbox {
+  display: none;
+  position: fixed;
+  background: var(--color-main);
+  border-radius: 7px;
+  width: 550px;
+  z-index: 10;
+}
+
+#dialogbox > div {
+  color: var(--color-text);
+  margin: 8px;
+}
+
+#dialogbox > div > #dialogboxhead {
+  background: var(--color-secondary);
+  font-size: 19px;
+  padding: 10px;
+  color: var(--color-text);
+}
+
+#dialogbox > div > #dialogboxbody {
+  background: var(--color-gray);
+  padding: 20px;
+  color: var(--color-text);
+}
+
+#dialogbox > div > #dialogboxfoot {
+  background: var(--color-secondary);
+  padding: 10px;
+  text-align: right;
+}
+
+
+form > div{
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form > .form-submit-div{
+  justify-content: right !important;
+}
+
+
+
+
+/**************************\
+  Basic Modal Styles
+\**************************/
+
+.modal {
+  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 4px;
+  overflow: none;
+  box-sizing: border-box;
+  width: 80%;
+  height: auto;
+}
+
+.modal__content>div>ul>li{
+  list-style: none;
+  margin: 10px;
+  padding: 10px;
+  background-color: var(--color-main);
+  color: var(--color-text);
+  transition: all 0.2s ease;
+}
+
+.modal__content>div>ul>li:hover{
+  list-style: none;
+  margin: 10px;
+  padding: 10px;
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: #00449e;
+  box-sizing: border-box;
+}
+
+.modal__close {
+  background: transparent;
+  border: 0;
+  color:black;
+}
+
+.modal__header .modal__close:before { content: "\2715"; }
+
+.modal__content {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: rgba(0,0,0,.8);
+}
+
+.modal__btn {
+  font-size: .875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  background-color: #e6e6e6;
+  color: rgba(0,0,0,.8);
+  border-radius: .25rem;
+  border-style: none;
+  border-width: 0;
+  cursor: pointer;
+  -webkit-appearance: button;
+  text-transform: none;
+  overflow: visible;
+  line-height: 1.15;
+  margin: 0;
+  will-change: transform;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition: -webkit-transform .25s ease-out;
+  transition: transform .25s ease-out;
+  transition: transform .25s ease-out,-webkit-transform .25s ease-out;
+}
+
+.modal__btn:focus, .modal__btn:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.modal__btn-primary {
+  background-color: #00449e;
+  color: #fff;
+}
+
+
+
+/**************************\
+  Demo Animation Style
+\**************************/
+@keyframes mmfadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes mmfadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}
+
+@keyframes mmslideIn {
+  from { transform: translateY(15%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes mmslideOut {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10%); }
+}
+
+.micromodal-slide {
+  display: none;
+}
+
+.micromodal-slide.is-open {
+  display: block;
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+  animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+  animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
+  will-change: transform;
 }
