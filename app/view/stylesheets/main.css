@@ -150,15 +150,31 @@ button{
   position: relative;
   background-color: var(--color-secondary);
   margin: auto;
-  width: 350px;
+  width: 600px;
   height: 350px;
   color: var(--color-text);
   transition: all 0.5s ease;
   transition: transform 0.2s;
 }
 
+.tile-spacing {
+  margin: 20px;
+}
+
 .tile:hover {
   transform: scale(1.05);
+}
+
+.tile-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 10px;
+}
+
+.tile-content>div{
+  height: 85%;
 }
 
 .bottom-title {
